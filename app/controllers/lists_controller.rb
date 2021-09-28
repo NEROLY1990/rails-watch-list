@@ -11,14 +11,15 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(list_params)
-    @list.save
-    redirect_to list_path(@list)
+    if @garden.save
+      redirect_to list_path(@list), notice: 'List was successfully created.'
+    else
+      render :new 
   end
 
   def show
     @show = Show.find(params[:id])
   end
-
 
   private
 

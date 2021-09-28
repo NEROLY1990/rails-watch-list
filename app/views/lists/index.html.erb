@@ -1,6 +1,27 @@
-<ul>
-  <% @lists.each do |list| %>
-    <li><%= list.name %></li>
-    <li><%= link_to list.name, list_path(list) %></li>
-  <% end %>
-</ul>
+
+<p id="notice"><%= notice %></p>
+
+<h1>Lists</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @list.each do |list| %>
+      <tr>
+        <td><%= list.name %></td>
+        <td><%= link_to 'Show', List %></td>
+        <td><%= link_to 'Edit', edit_list_path(list) %></td>
+        <td><%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New List', new_list_path %>
