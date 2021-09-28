@@ -16,8 +16,9 @@ class ListsController < ApplicationController
   end
 
   def show
-    @show = Show.find(param[:id])
+    @show = Show.find(params[:id])
   end
+
 
   private
 
