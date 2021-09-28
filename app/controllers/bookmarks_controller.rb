@@ -18,20 +18,19 @@ class BookmarksController < ApplicationController
   #end
   def create
     @list = List.find(params[:list_id])
-    @bookmark_id = bookmark_id.find(params[:bookmark_id][:bookmark])
-    @bookmarks_id.each do |bookmark|
-      bookmark_id = Bookmark.new
-      bookmark_id.list = list
-      bookmark_id.save
+    @bookmark = bookmark.find(params[:bookmark_id][:bookmark])
+    @bookmarks.each do
+      @bookmark = Bookmark.new
+      @bookmark.list = list
+      @bookmark.save
     end
-    redirect_to bookmark_path(@list.bookmark)
+    redirect_to list_bookmarks_path(@list.bookmark)
   end
-  
 
   def destroy
     @bookmark = Bookmark.find(params[:list_id])
     @bookmark.destroy
-    redirect_to list_path, notice: 'Bookmark was successfully destroyed.'
+    redirect_to list_bookmarks_path(@list.bookmark), notice: 'Bookmark was successfully destroyed.'
   end
 
 end
